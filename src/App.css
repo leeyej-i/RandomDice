@@ -1,38 +1,140 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  width: 100vw;
+  overflow-x: hidden;
+  color: #3f464d;
+  background-color: #ffffff;
+  font-family: "Spoqa Han Sans Neo", "Sans-serif";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  all: unset;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a:link {
+  text-decoration: none;
+  color: #3e3d3f;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #3e3d3f;
+}
+
+a:active {
+  text-decoration: none;
+  color: #00000000
+}
+
+a:hover {
+  text-decoration: none;
+  color: #a1a1a1
+}
+
+div.app {
+  width: 100%;
+}
+
+.head-container {
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1.title a {
+  font-size: 40px;
+  color: #5f5f5f;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+h1.title a:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+
+div.menu-box-active {
+  width: 100%;
+  height: 100%;
+  background-color: #7e7d7d;
+  position: fixed;
+  z-index: 50;
+  opacity: 90%;
+  left: 0;
+  top: 0;
+
+}
+
+div.menu-box {
+  display: none;
+}
+
+ul.menu {
+  font-size: 6vh;
+  font-weight: bold;
+  list-style: none;
+  display: block;
+  padding-top: 40px;
+  padding-left: 25%;
+  line-height: 7.5vh;
+}
+
+ul.header-menu {
+  font-size: 20px;
+  width: 50%;
+  font-weight: bold;
+  margin-right: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+ul.member {
+  font-size: 4vh;
+  list-style: none;
+  font-weight: bold;
+  line-height: 5.5vh;
+}
+
+div.btn-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 80px;
+  align-items: center;
+}
+
+button.menu_btn {
+  display: flex;
+  margin: auto 0;
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
+  border: none;
+  z-index: 1000;
+  background-color: #3d3d3d;
+
 }
 
-.App-link {
-  color: #61dafb;
+button.menu_btn:hover {
+  background-color: #000000;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button.menu_btn span {
+  width: 70%;
+  height: 3px;
+  background: #ffffff;
 }
