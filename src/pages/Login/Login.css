@@ -60,7 +60,7 @@ form {
 }
 
 .btn_clear {
-    background: url("../image/erase.png");
+    background: url("../../image/erase.png");
     border: 0;
     background-size: cover;
     height: 60%;

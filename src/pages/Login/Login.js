@@ -1,7 +1,8 @@
 import './Login.css';
 import React, { useState } from 'react';
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 
 const StyledLink = styled(Link)`
@@ -14,10 +15,11 @@ const StyledLink = styled(Link)`
     font-weight:bold;
 `;
 const Login = () => {
+
     const [inputId, setInputId] = useState('')
     const [inputPw, setInputPw] = useState('')
 
-
+    const navigate = useNavigate()
     const handleInputId = (e) => {
         setInputId(e.target.value)
     }
@@ -34,7 +36,7 @@ const Login = () => {
         setInputPw("")
     }
 
-    const onSubmitLogin = (e) => {
+    const onLogin = (e) => {
         e.preventDefault();
         if (!inputId) {
             return alert("ID를 입력해주세요.")
@@ -50,17 +52,34 @@ const Login = () => {
                 password: inputPw
             };
 
-            console.log(body)
-
+            axios.post('/api/login', body)
+                .then(res => {
+                    if (res.data[0].cnt === 1) {
+                        console.log("로그인성공")
+                        // sessionsStorage는 창 닫으면 사라짐, localStorage는 안사라짐
+                        navigate("/");
+                    } else {
+                        alert("아이디, 패스워드가 정확하지 않습니다.");
+                        setInputId("")
+                        setInputPw("")
+                        navigate("/login");
+                    }
+                })
+                .catch((e) => {
+                    console.error(e);
+                });
 
         }
+
+
     }
+
 
     return (
         <div className='login_container'>
             <h2>RandomDice</h2>
             <div className='login_container_form'>
-                <form onSubmit={onSubmitLogin}>
+                <form>
                     <div className="box_tf fst">
                         <input type="text" name="input_id" placeholder="아이디" className="tf_g" value={inputId} onChange={handleInputId} />
                         <div className="util_tf">
@@ -74,10 +93,10 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="confirm_btn">
-                        <button type="submit" className="btn_g highlight submit">로그인</button>
+                        <button type="submit" onClick={onLogin} className="btn_g highlight submit">로그인</button>
                     </div>
                 </form>
-                <StyledLink to="/signup" >회원가입</StyledLink>
+                <StyledLink to="/signup">회원가입</StyledLink>
             </div >
         </div >
     );

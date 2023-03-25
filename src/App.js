@@ -5,7 +5,7 @@ import Header from "./components/Header.js"
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Menu from "./components/Menu.js";
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Update from './pages/Update';
 import Board from './pages/Board';
 import SignUp from './pages/SignUp';
