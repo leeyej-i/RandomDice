@@ -78,6 +78,31 @@ app.post("/api/signup", (req, res) => {
 
 });
 
+app.get("/api/list", (req, res) => {
+    const sqlQuery =
+        "SELECT b_num, title, id, DATE_FORMAT(date, '%Y-%m-%d') as date FROM board;";
+    db.query(sqlQuery, (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("result", result)
+        res.send(result);
+    });
+
+});
+
+app.get("/api/detail", (req, res) => {
+    const { num } = req.query;
+    const sqlQuery = "select  b_num, title, id, content, DATE_FORMAT(date, '%Y-%m-%d') as date from board where b_num =?;";
+    db.query(sqlQuery, [num], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("result", result)
+        res.send(result);
+    });
+
+});
 // app.post('/api/login', (req, res)=>{
 //     console.log(req)
 // });

@@ -58,7 +58,7 @@ const Login = () => {
                         console.log("로그인성공")
                         sessionStorage.setItem('id', inputId)
                         // sessionsStorage는 창 닫으면 사라짐, localStorage는 안사라짐
-                        window.location.replace("/")
+                        window.location.replace("/home")
                     } else {
                         alert("아이디, 패스워드가 정확하지 않습니다.");
                         setInputId("")

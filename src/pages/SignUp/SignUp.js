@@ -121,7 +121,7 @@ const SignUp = () => {
                     console.log(res.data);
                     if (res.data === "success") {
                         sessionStorage.setItem('id', id)
-                        window.location.replace("/")
+                        window.location.replace("/home")
 
                     }
                 })
