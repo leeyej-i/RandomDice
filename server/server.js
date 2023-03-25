@@ -26,8 +26,8 @@ app.use(bodyParser.json())
 
 app.post("/api/login", (req, res) => {
     console.log(req.body.password)
-    var id = req.body.id;
-    var password = req.body.password;
+    const id = req.body.id;
+    const password = req.body.password;
 
     const sqlQuery =
         "select count(*) as 'cnt' from player where id =? and passwd =?;";
@@ -38,6 +38,42 @@ app.post("/api/login", (req, res) => {
 
         console.log(result)
         res.send(result);
+    });
+
+});
+
+app.post("/api/idcheck", (req, res) => {
+    const id = req.body.id;
+    console.log(id)
+
+    const sqlQuery =
+        "select count(*) as 'cnt' from player where id =?;";
+    db.query(sqlQuery, [id], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        console.log(result)
+        res.send(result);
+    });
+
+});
+
+app.post("/api/signup", (req, res) => {
+    const id = req.body.id;
+    const password = req.body.password;
+    const nickname = req.body.nickname;
+    const gameId = req.body.gameId;
+
+    const sqlQuery =
+        "INSERT INTO player (id, nickname, passwd, gameid) VALUES (?, ?, ?, ?)";
+    db.query(sqlQuery, [id, nickname, password, gameId], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        console.log("추가 성공")
+        res.send("success");
     });
 
 });

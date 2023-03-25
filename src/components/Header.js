@@ -22,6 +22,10 @@ const Header = ({ menuOpened, setMenuOpened }) => {
     const [pageY, setPageY] = useState(0);
     const ref = useRef(document);
 
+    const logout = () => {
+        sessionStorage.setItem("id", "")
+        navigator("/")
+    }
     const handleClickOpenMenu = () => {
         console.log(menuOpened)
         if (menuOpened === false) {
@@ -38,9 +42,10 @@ const Header = ({ menuOpened, setMenuOpened }) => {
             <div className="head-container">
                 <h1 className="title"><Link to="/">RandomDice</Link></h1>
                 <ul className="header-menu">
-                    <li><Link to="/login">로그인</Link></li>
-                    <li><Link to="#news">로그아웃</Link></li>
-                    <li><Link to="/update">회원정보</Link></li>
+                    {sessionStorage.getItem("id") === "" ?
+                        <li><Link to="/login">로그인</Link></li> :
+                        <li><Link onClick={logout}>로그아웃</Link></li>
+                    }
                     <li><Link to="/board">게시판</Link></li>
                     <li><Link to="/collaboration">협동</Link></li>
                 </ul>

@@ -7,8 +7,8 @@ import Menu from "./components/Menu.js";
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Update from './pages/Update';
-import Board from './pages/Board';
-import SignUp from './pages/SignUp';
+import Board from './pages/Board/Board';
+import SignUp from './pages/SignUp/SignUp';
 import Collaboration from './pages/Collaboration';
 
 function App() {
