@@ -161,6 +161,36 @@ app.post("/api/update", (req, res) => {
 
 });
 
+app.get("/api/comment", (req, res) => {
+    const b_num = req.query.b_num;
+    const sqlQuery =
+        "SELECT  c_num,id, content FROM comment where b_num = ?;";
+    db.query(sqlQuery, [b_num], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("result", result)
+        res.send(result);
+    });
+
+});
+
+app.post("/api/writecomment", (req, res) => {
+    const id = req.body.id;
+    const b_num = req.body.b_num;
+    const contents = req.body.contents;
+    const sqlQuery =
+        "INSERT INTO comment VALUES (?, ?, ?, ?)";
+    db.query(sqlQuery, [null, id, contents, b_num], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        console.log("추가 성공")
+        res.send("success");
+    });
+
+});
 
 app.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);

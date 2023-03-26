@@ -1,0 +1,44 @@
+.comment_box {
+    border-top: 2px solid #000;
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
+.comment {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #868585
+}
+
+.comment-id {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 0 5px;
+    color: #3900a3;
+    height: 50px;
+    width: 20%;
+    border-right: 1px solid #868585;
+}
+
+.comment-contents {
+    align-items: center;
+    display: flex;
+    width: 80%;
+    height: 50px;
+    padding-left: 5px;
+}
+
+.comment-contents-write {
+    align-items: center;
+    display: flex;
+    width: 65%;
+    height: 50px;
+    padding-left: 5px;
+}
+
+.button-box {
+    height: 50px;
+}
