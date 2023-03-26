@@ -70,7 +70,9 @@ const Board = () => {
                     }
                 </tbody>
             </Table>
-            <Button onClick={() => write()}>글쓰기</Button>
+            {sessionStorage.getItem("id") === '' ? <div></div> :
+                <Button style={{ float: "right" }} variant="secondary" onClick={() => write()}>글쓰기</Button>
+            }
         </div >
     );
 };

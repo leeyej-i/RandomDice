@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
-import { Button, Table } from 'react-bootstrap';
-import './Write.css';
+import React from 'react';
+import './Update.css'
+import { useState, useEffect } from 'react';
+import { Table, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
-const Write = () => {
+const Update = () => {
 
     const [title, setTitle] = useState("")
     const [contents, setContents] = useState("")
+    const location = useLocation();
+
+    useEffect(() => {
+        setTitle(location.state.title)
+        setContents(location.state.contents)
+    }, []);
+
 
     const handleInputTitle = (e) => {
         setTitle(e.target.value)
@@ -32,11 +41,11 @@ const Write = () => {
                 contents: contents
             };
 
-            axios.post('/api/write', body)
+            axios.post('/api/update', body)
                 .then(res => {
                     console.log(res.data);
                     if (res.data === "success") {
-                        window.location.replace("/board")
+                        window.history.back()
 
                     }
                 })
@@ -49,7 +58,7 @@ const Write = () => {
 
     return (
         <div className="container">
-            <h2>글쓰기</h2>
+            <h2>글 수정하기</h2>
             <Table bordered>
                 <colgroup>
                     <col width="15%" />
@@ -59,13 +68,13 @@ const Write = () => {
                     <tr className='title_tr'>
                         <th scope="row">제목</th>
                         <td  >
-                            <input type="text" id="title" name="title" onChange={handleInputTitle}
+                            <input type="text" id="title" name="title" value={title} onChange={handleInputTitle}
                             />
                         </td>
                     </tr>
                     <tr className='content_tr'>
                         <td colSpan={2} >
-                            <textarea title="내용" id="contents" name="contents" onChange={handleInputContents}
+                            <textarea title="내용" id="contents" value={contents} name="contents" onChange={handleInputContents}
                             ></textarea>
                         </td>
                     </tr>
@@ -76,4 +85,4 @@ const Write = () => {
     );
 };
 
-export default Write;
+export default Update;

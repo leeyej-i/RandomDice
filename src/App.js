@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Menu from "./components/Menu.js";
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
-import Update from './pages/Update';
+import Update from './pages/Board/Update';
 import Board from './pages/Board/Board';
 import SignUp from './pages/SignUp/SignUp';
 import Collaboration from './pages/Collaboration';
@@ -32,6 +32,7 @@ function App() {
           <Route path="/update" element={<Update />} />
           <Route path="/board" element={<Board />} />
           <Route path="/content" element={<Content />} />
+          <Route path="/update" element={<Content />} />
           <Route path="/write" element={<Write />} />
           <Route path="/collaboration" element={<Collaboration />} />
         </Routes>

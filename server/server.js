@@ -80,7 +80,7 @@ app.post("/api/signup", (req, res) => {
 
 app.get("/api/list", (req, res) => {
     const sqlQuery =
-        "SELECT b_num, title, id, DATE_FORMAT(date, '%Y-%m-%d') as date FROM board;";
+        "SELECT b_num, title, id, DATE_FORMAT(date, '%Y-%m-%d') as date FROM board order by b_num desc;";
     db.query(sqlQuery, (err, result) => {
         if (err) {
             console.log(err);
@@ -103,9 +103,63 @@ app.get("/api/detail", (req, res) => {
     });
 
 });
-// app.post('/api/login', (req, res)=>{
-//     console.log(req)
-// });
+
+app.post("/api/write", (req, res) => {
+    const id = req.body.id;
+    const title = req.body.title;
+    const contents = req.body.contents;
+    const today = new Date()
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    const date = year + '-' + month + '-' + day;
+    const sqlQuery =
+        "INSERT INTO board VALUES (?, ?, ?, ?, ?)";
+    db.query(sqlQuery, [null, title, id, contents, date], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        console.log("추가 성공")
+        res.send("success");
+    });
+
+});
+
+app.get("/api/delete", (req, res) => {
+    const { num } = req.query;
+    const sqlQuery = "DELETE FROM board WHERE b_num = ?";
+    db.query(sqlQuery, [num], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("result", result)
+        res.send(result);
+    });
+
+});
+
+app.post("/api/update", (req, res) => {
+    const id = req.body.id;
+    const title = req.body.title;
+    const contents = req.body.contents;
+    const today = new Date()
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    const date = year + '-' + month + '-' + day;
+    const sqlQuery =
+        "update board set title=?, content=?, date=? where id = ?";
+    db.query(sqlQuery, [title, contents, date, id], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        console.log("추가 성공")
+        res.send("success");
+    });
+
+});
 
 
 app.listen(PORT, () => {
