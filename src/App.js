@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp/SignUp';
 import Collaboration from './pages/Collaboration';
 import Content from './pages/Board/Content';
 import Write from './pages/Board/Write';
+import Footer from './components/Footer';
 
 function App() {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -25,6 +26,7 @@ function App() {
         <Menu
           menuOpened={menuOpened}
           setMenuOpened={setMenuOpened} />
+
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -36,6 +38,7 @@ function App() {
           <Route path="/write" element={<Write />} />
           <Route path="/collaboration" element={<Collaboration />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );
