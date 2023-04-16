@@ -24,7 +24,7 @@ const Header = ({ menuOpened, setMenuOpened }) => {
 
     const logout = () => {
         sessionStorage.setItem("id", "")
-        window.location.replace("/home")
+        window.location.replace("/")
     }
     const handleClickOpenMenu = () => {
         console.log(menuOpened)
@@ -40,13 +40,14 @@ const Header = ({ menuOpened, setMenuOpened }) => {
     return (
         <HeaderWrap className={hide && 'hide'}>
             <div className="head-container">
-                <h1 className="title"><Link to="/home">RandomDice</Link></h1>
+                <h1 className="title"><Link to="/">RandomDice</Link></h1>
                 <ul className="header-menu">
                     {sessionStorage.getItem("id") === "" ?
                         <li><Link to="/login">로그인</Link></li> :
                         <li><Link onClick={logout}>로그아웃</Link></li>
                     }
                     <li><Link to="/board">게시판</Link></li>
+                    <li><Link to="/dice">주사위 소개</Link></li>
                     <li><Link to="/collaboration">협동</Link></li>
                 </ul>
                 <button className="menu_btn" onClick={() => handleClickOpenMenu()}>

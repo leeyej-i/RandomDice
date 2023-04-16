@@ -6,7 +6,6 @@ div {
 
     width: 500px;
     margin: 0 auto;
-    margin-top: 10rem;
 }
 
 h2 {
@@ -60,7 +59,7 @@ form {
 }
 
 .btn_clear {
-    background: url("../../image/erase.png");
+    background: url("../../../public/images/erase.png");
     border: 0;
     background-size: cover;
     height: 60%;

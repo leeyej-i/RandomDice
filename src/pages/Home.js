@@ -95,9 +95,12 @@ const Home = () => {
                 </div>
             </section>
             <div className='benefit-slide'>
+                <h2>이벤트 및 공지</h2>
                 <div className='slide-item'>
+
                     <div className='slide-item-left' >
                         <a href='#'><img src={bfImg1[slideNum]} ref={target1} className='animatedItemUp' /></a>
+
                         <div className='slide-bar'>
                             <div className='slide-page-bar'>
                                 {active[0] === false ? <span className='slide-page-bar-item'></span> : <span className='slide-page-bar-item-on'></span>}
