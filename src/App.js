@@ -10,7 +10,7 @@ import Update from './pages/Board/Update';
 import Board from './pages/Board/Board';
 import SignUp from './pages/SignUp/SignUp';
 import Dice from './pages/Dice/Dice';
-import Collaboration from './pages/Collaboration';
+import Collaboration from './pages/Collaboration/Collaboration';
 import Content from './pages/Board/Content';
 import Write from './pages/Board/Write';
 import Footer from './components/Footer';

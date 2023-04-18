@@ -1,0 +1,21 @@
+.choose-dice-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.dice-set {
+    position: fixed;
+    top: 50%;
+    left: 0%;
+
+}
+
+.choose-dice {
+    width: 20%;
+}
+
+.class-box {
+    margin-top: 5px;
+    text-align: center;
+}
