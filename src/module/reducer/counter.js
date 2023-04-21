@@ -53,8 +53,7 @@ const counter = (state = initalState, action) => {
                 counters: [
                     ...counters.slice(0, action.index),
                     {
-                        ...counter[action.index],
-                        num: counters[action.index].num,
+                        ...counters[action.index],
                         count: counters[action.index].count + 1
                     },
                     ...counters.slice(action.index + 1, counters.length)
@@ -66,8 +65,7 @@ const counter = (state = initalState, action) => {
                 counters: [
                     ...counters.slice(0, action.index),
                     {
-                        ...counter[action.index],
-                        num: counters[action.index].num,
+                        ...counters[action.index],
                         count: counters[action.index].count - 1
                     },
                     ...counters.slice(action.index + 1, counters.length)
@@ -80,9 +78,8 @@ const counter = (state = initalState, action) => {
                 counters: [
                     ...counters.slice(0, action.index),
                     {
-                        ...counter[action.index],
+                        ...counters[action.index],
                         num: action.num,
-                        count: counters[action.index].count
                     },
                     ...counters.slice(action.index + 1, counters.length)
                 ]

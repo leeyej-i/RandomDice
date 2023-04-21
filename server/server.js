@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3001;
 const bodyParser = require('body-parser')
 const mysql = require("mysql");
+const http = require('http')
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -192,6 +193,33 @@ app.post("/api/writecomment", (req, res) => {
 
 });
 
-app.listen(PORT, () => {
+const socketio = require('socket.io')
+const server = http.createServer(app);
+const io = socketio(server, {
+    cors: {
+        origin: "http://localhost:3000",
+        methods: ["GET", "POST"]
+    }
+});
+
+io.on('connection', (socket) => {
+    console.log('유저가 들어왔다');
+
+
+
+    socket.on('chat-msg', (msg) => {
+        console.log(msg)
+        io.emit('chat-msg', msg);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('유저 나갔다');
+    });
+});
+
+
+
+
+server.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);
 });
