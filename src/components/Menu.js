@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Menu = ({ menuOpened, setMenuOpened }) => {
@@ -12,9 +13,13 @@ const Menu = ({ menuOpened, setMenuOpened }) => {
             menuOpened = false;
         }
         setMenuOpened(menuOpened);
-
-
     }
+
+    const logout = () => {
+        sessionStorage.setItem("id", "")
+        window.location.replace("/")
+    }
+
     return (
         <div className={menuOpened === false ? "menu-box" : "menu-box-active"}>
             <div className="btn-box">
@@ -25,19 +30,13 @@ const Menu = ({ menuOpened, setMenuOpened }) => {
                 </button>
             </div>
             <ul className="menu">
-                <li><a href="/main" onClick={() => handleClickOpenMenu()}>로그인</a></li>
-                <li><a href="#news" onClick={() => handleClickOpenMenu()}>로그아웃</a></li>
-                <li><a href="#news" onClick={() => handleClickOpenMenu()}>회원정보</a></li>
-                <li>
-                    <a href="#member" onClick={() => handleClickOpenMenu()}>게시판</a>
-                    <ul className="member">
-                        <li><a href="#member0" onClick={() => handleClickOpenMenu()}>신고 게시판</a></li>
-                        <li><a href="#member1" onClick={() => handleClickOpenMenu()}>자유 게시판</a></li>
-                        <li><a href="#member2" onClick={() => handleClickOpenMenu()}>공략 게시판</a></li>
-                        <li><a href="#member2" onClick={() => handleClickOpenMenu()}>홍보 게시판</a></li>
-                    </ul>
-                </li>
-                <li><a href="#album" onClick={() => handleClickOpenMenu()}>협동</a></li>
+                {sessionStorage.getItem("id") === "" ?
+                    <li><Link to="/login">로그인</Link></li> :
+                    <li><Link onClick={logout}>로그아웃</Link></li>
+                }
+                <li><Link to="/board">게시판</Link></li>
+                <li><Link to="/dice">주사위 소개</Link></li>
+                <li><Link to="/collaboration">협동</Link></li>
             </ul>
         </div>
     )
