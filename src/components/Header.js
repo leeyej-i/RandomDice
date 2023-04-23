@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const HeaderWrap = styled.div`
     width: 100%;
     height: 80px;
     transition: 0.4s ease;
-    background-color: rgba(0,0,0, 0.2);
+    background-color: rgba(0,0,0, 0.4);
     &.hide {
         transform: translateY(-80px);
     }
@@ -21,6 +21,34 @@ const Header = ({ menuOpened, setMenuOpened }) => {
     const [hide, setHide] = useState(false);
     const [pageY, setPageY] = useState(0);
     const ref = useRef(document);
+
+    const handleScroll = () => {
+        const { pageYOffset } = window;
+        const moveY = pageYOffset - pageY;
+        const hide = pageYOffset !== 0 && moveY >= 0;
+        setHide(hide);
+        setPageY(pageYOffset);
+    };
+
+    const throttle = (callback, wait) => {
+        // true로 주어서 콜백함수가 처음 한번은 바로 실행되도록 함
+        let waiting = true;
+        return function () {
+            if (waiting) {
+                callback();
+                waiting = false;
+                // wait만큼 시간이 지난 후, true로 바뀌면서 다시 실행됨.
+                setTimeout(() => {
+                    waiting = true;
+                }, wait);
+            }
+        };
+    };
+    useEffect(() => {
+        ref.current.addEventListener('scroll', throttle(handleScroll, 1000));
+        return () =>
+            ref.current.removeEventListener('scroll', throttle(handleScroll, 1000));
+    }, [pageY]);
 
     const logout = () => {
         sessionStorage.setItem("id", "")
@@ -37,6 +65,9 @@ const Header = ({ menuOpened, setMenuOpened }) => {
         console.log(menuOpened)
         setMenuOpened(menuOpened)
     }
+
+
+
     return (
         <HeaderWrap className={hide && 'hide'}>
             <div className="head-container">
