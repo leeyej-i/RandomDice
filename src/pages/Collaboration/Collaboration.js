@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ChooseDice from './ChooseDice'
 import './Collaboration.css';
 import { Button } from 'react-bootstrap';
@@ -15,7 +15,7 @@ const Collaboration = () => {
     const counter = useSelector((state) => state.counter.counters)
     const [messages, setMessages] = useState([])
     const ENDPOINT = 'http://localhost:3001'
-
+    const msgEndRef = useRef();
 
     useEffect(() => {
         socket = io.connect(ENDPOINT)
@@ -29,6 +29,15 @@ const Collaboration = () => {
         };
     }, [])
 
+    const scrollToBottom = () => {
+        if (msgEndRef.current) {
+            msgEndRef.current.scrollTop = msgEndRef.current.scrollHeight;
+        }
+    };
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
 
     const handleInputMsg = (e) => {
         setMessage(e.target.value)
@@ -40,10 +49,10 @@ const Collaboration = () => {
     }
 
     return (
-        <div>
+        <div className='container' style={{ paddingBottom: '50px' }}>
             {diceChoose === false ?
                 <div>
-                    <h3>주사위 선택</h3>
+                    <h2>주사위 선택</h2>
                     <div className='choose-dice-container'>
 
                         <div className='choose-dice'><ChooseDice index="0"></ChooseDice></div>
@@ -57,38 +66,44 @@ const Collaboration = () => {
                     }} style={{ float: "right", marginTop: "10px" }} variant="secondary" >제출</Button>
                 </div>
                 :
-                <div>
-                    <ul id="messages">{messages.map((v, index) => (
+                <div className='container' style={{ paddingBottom: '50px' }}>
+                    <h2>협동 채팅방</h2>
+                    <div ref={msgEndRef} style={{ height: '60vh', overflowY: "auto" }} id="messages">{messages.map((v, index) => (
                         <div key={index}>
                             <div className='user-dice-box'>
-                                <div>
-                                    <img style={{ display: "block" }} src={diceData[2][v.counter[0].num - 1]}></img>
-                                    <span>{v.counter[0].count}</span>
+                                <div className="user-dice-box-item">
+                                    <img src={diceData[2][v.counter[0].num - 1]}></img>
+                                    <div className="user-dice-box-item-text">{v.counter[0].count}</div>
                                 </div>
-                                <div>
-                                    <img style={{ display: "block" }} src={diceData[2][v.counter[1].num - 1]}></img>
-                                    <span>{v.counter[1].count}</span>
+                                <div className="user-dice-box-item">
+                                    <img src={diceData[2][v.counter[1].num - 1]}></img>
+                                    <div className="user-dice-box-item-text">{v.counter[1].count}</div>
                                 </div>
-                                <div>
-                                    <img style={{ display: "block" }} src={diceData[2][v.counter[2].num - 1]}></img>
-                                    <span>{v.counter[2].count}</span>
+                                <div className="user-dice-box-item">
+                                    <img src={diceData[2][v.counter[2].num - 1]}></img>
+                                    <div className="user-dice-box-item-text">{v.counter[2].count}</div>
                                 </div>
-                                <div>
-                                    <img style={{ display: "block" }} src={diceData[2][v.counter[3].num - 1]}></img>
-                                    <span>{v.counter[3].count}</span>
+                                <div className="user-dice-box-item">
+                                    <img src={diceData[2][v.counter[3].num - 1]}></img>
+                                    <div className="user-dice-box-item-text">{v.counter[3].count}</div>
                                 </div>
-                                <div>
-                                    <img style={{ display: "block" }} src={diceData[2][v.counter[4].num - 1]}></img>
-                                    <span>{v.counter[4].count}</span>
+                                <div className="user-dice-box-item">
+                                    <img src={diceData[2][v.counter[4].num - 1]}></img>
+                                    <div className="user-dice-box-item-text">{v.counter[4].count}</div>
                                 </div>
                             </div>
-                            <span>{v.message}</span>
+                            <span className='c-msg'>{v.message}</span>
                         </div>
                     ))}
-                    </ul>
+                    </div>
                     <form action="">
-                        <input value={message} onChange={handleInputMsg} />
-                        <button type="button" onClick={sendMessage}>보내기</button>
+                        <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+                            <div style={{ border: '1px solid', width: "80%" }}>
+                                <input value={message} onChange={handleInputMsg} />
+                            </div>
+                            <Button variant="secondary" style={{ float: "right", width: "20%" }} type="button" onClick={sendMessage}>보내기</Button>
+
+                        </div>
                     </form>
                 </div >
             }

@@ -25,15 +25,17 @@ a:visited {
   color: #fbf9fd;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #3d3d3d !important;
+}
+
 a:active {
   text-decoration: none;
   color: #fbf9fd;
 }
 
-a:hover {
-  text-decoration: none;
-  color: #a1a1a1
-}
+
 
 div.app {
   width: 100%;

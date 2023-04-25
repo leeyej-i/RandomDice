@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
-
+import React from 'react';
+import '../App.css'
 const Menu = ({ menuOpened, setMenuOpened }) => {
 
     const handleClickOpenMenu = () => {
@@ -31,12 +29,15 @@ const Menu = ({ menuOpened, setMenuOpened }) => {
             </div>
             <ul className="menu">
                 {sessionStorage.getItem("id") === "" ?
-                    <li><Link to="/login">로그인</Link></li> :
-                    <li><Link onClick={logout}>로그아웃</Link></li>
+                    <>
+                        <li><a href="/login">로그인</a></li>
+                        <li><a href="/signup">회원가입</a></li>
+                    </> :
+                    <li><a href="/" onClick={logout}>로그아웃</a></li>
                 }
-                <li><Link to="/board">게시판</Link></li>
-                <li><Link to="/dice">주사위 소개</Link></li>
-                <li><Link to="/collaboration">협동</Link></li>
+                <li><a href="/board">게시판</a></li>
+                <li><a href="/dice">주사위 소개</a></li>
+                <li><a href="/collaboration">협동</a></li>
             </ul>
         </div>
     )

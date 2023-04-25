@@ -57,7 +57,7 @@ const Update = () => {
 
 
     return (
-        <div className="container">
+        <div className="container" style={{ paddingBottom: '50px' }}>
             <h2>글 수정하기</h2>
             <Table bordered>
                 <colgroup>

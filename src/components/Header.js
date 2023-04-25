@@ -74,7 +74,10 @@ const Header = ({ menuOpened, setMenuOpened }) => {
                 <h1 className="title"><Link to="/">RandomDice</Link></h1>
                 <ul className="header-menu">
                     {sessionStorage.getItem("id") === "" ?
-                        <li><Link to="/login">로그인</Link></li> :
+                        <>
+                            <li><Link to="/login">로그인</Link></li>
+                            <li><Link to="/signup">회원가입</Link></li>
+                        </> :
                         <li><Link onClick={logout}>로그아웃</Link></li>
                     }
                     <li><Link to="/board">게시판</Link></li>

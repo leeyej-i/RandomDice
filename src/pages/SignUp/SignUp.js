@@ -133,9 +133,9 @@ const SignUp = () => {
 
     return (
         <div id="container" role="main">
-            <h2>RandomDice</h2>
             <form>
                 <div id="content">
+                    <h2>RandomDice</h2>
                     <div className="join_content">
                         <div className="row_group">
                             <div className="join_row">

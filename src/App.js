@@ -1,4 +1,5 @@
 
+import './reset.css';
 import './App.css';
 import React, { useState, useEffect, useRef } from 'react'
 import Header from "./components/Header.js"

@@ -1,15 +1,11 @@
-.dice-row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
+.dice-set button {
+    border: 0;
+    width: 80px;
 }
 
-.dice-row button {
-    width: 12.5%;
-}
-
-.dice-row button img {
-    width: 100%;
+.dice-set button img {
+    width: 65px;
+    margin: auto auto;
 }
 
 .dice-introduce {

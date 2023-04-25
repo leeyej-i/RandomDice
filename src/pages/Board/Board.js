@@ -46,7 +46,7 @@ const Board = () => {
 
     return (
 
-        <div className="container">
+        <div className="container" style={{ paddingBottom: '50px' }}>
             <h2>커뮤니티</h2>
             <Table striped bordered hover>
                 <thead>

@@ -2,14 +2,9 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
-.dice-set {
-    position: fixed;
-    top: 50%;
-    left: 0%;
-
-}
 
 .choose-dice {
     width: 20%;
@@ -23,4 +18,44 @@
 .user-dice-box {
     display: flex;
     flex-direction: row;
+}
+
+.c-dice-set {
+    position: absolute;
+    left: 3%;
+}
+
+.c-dice-set button {
+    width: 80px;
+}
+
+.c-dice-set button img {
+    width: 100%;
+}
+
+div.user-dice-box {
+    width: 40%;
+}
+
+div.user-dice-box-item {
+    width: 20%;
+    position: relative;
+}
+
+div.user-dice-box-item img {
+    width: 100%;
+}
+
+div.user-dice-box-item-text {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 0.9rem;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+}
+
+.c-msg {
+    font-size: 1.1rem;
+    padding-left: 0.5rem;
 }

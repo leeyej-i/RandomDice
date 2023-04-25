@@ -71,11 +71,11 @@ const Home = () => {
         "/images/event4.png",
         "/images/event5.png"]
 
-    const bfImg2 = ["https://yt3.ggpht.com/mliZiT9xO2TgPQ0DihtcJd9knAAMSgtl1YDUhGxWqUETJ_HDtKxVoUnYzMyYdqm9rRQIjewXZk-_cBA=s800-c-fcrop64=1,00000000ffffffff-nd-v1",
-        "https://yt3.ggpht.com/0a9zovaHdE1hsUqWcxgDg9m1PyFxLNDVAw8Hujog9sAOQoPO_fwhgaajwnqVbxlv6MWbFxEKEGl1FQ=s800-c-fcrop64=1,00000000ffffffff-nd-v1",
-        "https://yt3.ggpht.com/4a9HAf-KIOIoaf7v17lb2JK4u0jyN53UTzEol60b38w5zKEvO3OLpbfAH57FxWISg7KYkQ7I1Xcw6P0=s800-c-fcrop64=1,00000000ffffffff-nd-v1",
-        "https://yt3.ggpht.com/eeYGLbJvQS70S1_onPuaa2hvUEl6kR00JFJv4u3abUcRsAW7tzesbzkLsYC9NPvYpSI8mcXupFKXsQ=s800-c-fcrop64=1,00000000ffffffff-nd-v1",
-        "https://yt3.ggpht.com/WzBM3rXXjcYxmOJeJi0m_7kMggX0tgWZalu2rxFlUM67WD6DiVeFRDT6T57qdIrOqaR1czejUdVlvQ=s800-c-fcrop64=1,00000000ffffffff-nd-v1"]
+    const bfImg2 = ["https://media.discordapp.net/attachments/968429287663357972/1065467394077773864/KR.png?width=732&height=488",
+        "https://cdn.discordapp.com/attachments/968429287663357972/1050615632162471936/RDD2_KR_.png",
+        "https://cdn.discordapp.com/attachments/968429287663357972/1025603020903415929/220929_RDD___KR.jpg",
+        "https://cdn.discordapp.com/attachments/968429287663357972/1019123247125643284/10_KR.png",
+        "https://media.discordapp.net/attachments/968429287663357972/969409586530500638/KR_1.png"]
     const target1 = useRef(null);
     const target2 = useRef(null);
     useEffect(() => {
@@ -94,7 +94,7 @@ const Home = () => {
                     <img src="https://i0.wp.com/www.levelwinner.com/wp-content/uploads/2021/08/random-dice-guide-1000x563-2.jpg?ssl=1" />
                 </div>
             </section>
-            <div className='benefit-slide'>
+            <div className='container'>
                 <h2>이벤트 및 공지</h2>
                 <div className='slide-item'>
 

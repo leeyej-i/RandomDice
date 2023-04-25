@@ -48,7 +48,7 @@ const Write = () => {
 
 
     return (
-        <div className="container">
+        <div className="container" style={{ paddingBottom: '50px' }}>
             <h2>글쓰기</h2>
             <Table bordered>
                 <colgroup>
@@ -71,7 +71,7 @@ const Write = () => {
                     </tr>
                 </tbody>
             </Table>
-            <Button style={{ float: "right" }} variant="secondary" onClick={writeSubmit}>제출</Button>
+            <Button style={{ float: "right", display: "block" }} variant="secondary" onClick={writeSubmit}>제출</Button>
         </div>
     );
 };

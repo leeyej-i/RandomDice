@@ -99,7 +99,7 @@ const Content = () => {
 
 
     return (
-        <div className="container">
+        <div className="container" style={{ paddingBottom: '50px' }}>
             <h2>게시글 상세 화면</h2>
             <Table striped bordered>
                 <colgroup>
