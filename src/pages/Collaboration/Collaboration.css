@@ -59,3 +59,9 @@ div.user-dice-box-item-text {
     font-size: 1.1rem;
     padding-left: 0.5rem;
 }
+
+.user-msg {
+    padding: 10px;
+    border: 2px dashed;
+    margin-bottom: 5px;
+}

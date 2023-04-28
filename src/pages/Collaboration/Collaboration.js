@@ -69,7 +69,7 @@ const Collaboration = () => {
                 <div className='container' style={{ paddingBottom: '50px' }}>
                     <h2>협동 채팅방</h2>
                     <div ref={msgEndRef} style={{ height: '60vh', overflowY: "auto" }} id="messages">{messages.map((v, index) => (
-                        <div key={index}>
+                        <div className="user-msg" key={index}>
                             <div className='user-dice-box'>
                                 <div className="user-dice-box-item">
                                     <img src={diceData[2][v.counter[0].num - 1]}></img>
