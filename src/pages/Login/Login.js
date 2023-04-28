@@ -79,7 +79,7 @@ const Login = () => {
 
     return (
         <div className='login_container'>
-            <h2>RandomDice</h2>
+            <h1>RandomDice</h1>
             <div className='login_container_form'>
                 <form>
                     <div className="box_tf fst">

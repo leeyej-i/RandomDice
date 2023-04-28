@@ -8,7 +8,7 @@ div {
     margin: 0 auto;
 }
 
-h2 {
+.login_container h1 {
     font-size: 3.5rem;
     text-align: center;
 }
@@ -89,4 +89,25 @@ form {
 
 .btn_g:hover {
     cursor: pointer;
+}
+
+
+div.login_container_form a:link {
+    text-decoration: none;
+    color: #030006;
+}
+
+div.login_container_form a:visited {
+    text-decoration: none;
+    color: #030006;
+}
+
+div.login_container_form a:hover {
+    text-decoration: none;
+    color: #d5d5d5 !important;
+}
+
+div.login_container_forma:active {
+    text-decoration: none;
+    color: #030006;
 }
