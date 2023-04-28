@@ -1,21 +1,25 @@
 
 import './reset.css';
 import './App.css';
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react'
+
 import Header from "./components/Header.js"
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Menu from "./components/Menu.js";
-import Home from './pages/Home';
-import Login from './pages/Login/Login';
-import Update from './pages/Board/Update';
-import Board from './pages/Board/Board';
-import SignUp from './pages/SignUp/SignUp';
-import Dice from './pages/Dice/Dice';
-import Collaboration from './pages/Collaboration/Collaboration';
-import Content from './pages/Board/Content';
-import Write from './pages/Board/Write';
 import Footer from './components/Footer';
+
 import { connect } from 'react-redux';
+const Home = lazy(() => import('./pages/Home'))
+const Login = lazy(() => import('./pages/Login/Login'))
+const SignUp = lazy(() => import('./pages/SignUp/SignUp'))
+const Dice = lazy(() => import('./pages/Dice/Dice'))
+const Collaboration = lazy(() => import('./pages/Collaboration/Collaboration'))
+const Update = lazy(() => import('./pages/Board/Update'))
+const Content = lazy(() => import('./pages/Board/Content'))
+const Write = lazy(() => import('./pages/Board/Write'))
+const Board = lazy(() => import('./pages/Board/Board'))
+
+
 
 function App() {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -31,19 +35,20 @@ function App() {
           <Menu
             menuOpened={menuOpened}
             setMenuOpened={setMenuOpened} />
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/collaboration" element={<Collaboration DefaultProp="10" />} />
-            <Route path="/update" element={<Update />} />
-            <Route path="/board" element={<Board />} />
-            <Route path="/dice" element={<Dice />} />
-            <Route path="/content" element={<Content />} />
-            <Route path="/update" element={<Content />} />
-            <Route path="/write" element={<Write />} />
-          </Routes>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/collaboration" element={<Collaboration DefaultProp="10" />} />
+              <Route path="/update" element={<Update />} />
+              <Route path="/board" element={<Board />} />
+              <Route path="/dice" element={<Dice />} />
+              <Route path="/content" element={<Content />} />
+              <Route path="/update" element={<Content />} />
+              <Route path="/write" element={<Write />} />
+            </Routes>
+          </Suspense>
 
 
         </BrowserRouter>
