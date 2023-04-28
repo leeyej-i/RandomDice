@@ -71,11 +71,11 @@ const Home = () => {
         "/images/event4.webp",
         "/images/event5.webp"]
 
-    const bfImg2 = ["https://media.discordapp.net/attachments/968429287663357972/1065467394077773864/KR.png?width=732&height=488",
-        "https://cdn.discordapp.com/attachments/968429287663357972/1050615632162471936/RDD2_KR_.png",
-        "https://cdn.discordapp.com/attachments/968429287663357972/1025603020903415929/220929_RDD___KR.jpg",
-        "https://cdn.discordapp.com/attachments/968429287663357972/1019123247125643284/10_KR.png",
-        "https://media.discordapp.net/attachments/968429287663357972/969409586530500638/KR_1.png"]
+    const bfImg2 = ["/images/event6.webp",
+        "/images/event7.webp",
+        "/images/event8.webp",
+        "/images/event9.webp",
+        "/images/event10.webp"]
     const target1 = useRef(null);
     const target2 = useRef(null);
     useEffect(() => {
