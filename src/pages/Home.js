@@ -93,7 +93,7 @@ const Home = () => {
                     <img alt='배경화면' src='/images/background.webp' />
                 </div>
             </section>
-            <div className='container'>
+            <div className='container' style={{ paddingBottom: '50px' }}>
                 <h2>이벤트 및 공지</h2>
                 <div className='slide-item'>
 
