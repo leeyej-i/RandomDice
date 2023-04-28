@@ -7,31 +7,18 @@ const Home = () => {
     const [prev, setPrev] = useState(false);
     const [next, setNext] = useState(true);
     const [active, setActive] = useState([true, false, false, false, false]);
-    function useInterval(callback, delay) {
-        const savedCallback = useRef(); // 최근에 들어온 callback을 저장할 ref를 하나 만든다.
 
-        useEffect(() => {
-            savedCallback.current = callback; // callback이 바뀔 때마다 ref를 업데이트 해준다.
-        }, [callback]);
+    let timer;
 
-        useEffect(() => {
-            function tick() {
-                savedCallback.current(); // tick이 실행되면 callback 함수를 실행시킨다.
-            }
-            if (delay !== null) {
-                // 만약 delay가 null이 아니라면
-                let intervalId = setInterval(tick, delay); // delay에 맞추어 interval을 새로 실행시킨다.
-                return () => clearInterval(intervalId); // unmount될 때 clearInterval을 해준다.
-            }
-        }, [delay]); // delay가 바뀔 때마다 새로 실행된다.
-    }
+    useEffect(() => {
+        if (move === false) return;
+        let newSlideNum = slideNum + 1
+        if (newSlideNum == 5) { newSlideNum = 0 }
+        timer = setInterval(() => setSlideNum(newSlideNum), 3000);
 
-    useInterval(
-        () => {
-            setSlideNum(slideNum + 1 === 5 ? 0 : slideNum + 1);
-        },
-        move ? 3000 : null
-    );
+        return () => clearInterval(timer)
+    });
+
 
     useEffect(() => {
         let newActive = [false, false, false, false, false]
@@ -52,12 +39,13 @@ const Home = () => {
 
     const handleChangeMove = () => {
         setMove(!move);
-
     }
+
     const handleChangePrev = () => {
         setMove(false)
         setSlideNum(slideNum === 0 ? 0 : slideNum - 1);
     }
+
     const handleChangeNext = () => {
         setMove(false)
         setSlideNum(slideNum === 4 ? 4 : slideNum + 1);
@@ -77,15 +65,7 @@ const Home = () => {
         "/images/event10.webp"]
     const target1 = useRef(null);
     const target2 = useRef(null);
-    useEffect(() => {
-        target1.current.classList.remove("animatedItemUp");
-        void target1.current.offsetWidth;
-        target1.current.classList.add("animatedItemUp");
 
-        target2.current.classList.remove("animatedItemLeft");
-        void target2.current.offsetWidth;
-        target2.current.classList.add("animatedItemLeft");
-    }, [slideNum])
     return (
         <div>
             <section className="main" id="main">
