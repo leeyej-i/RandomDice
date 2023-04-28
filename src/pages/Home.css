@@ -49,6 +49,7 @@ div.jb-box {
 
 div.jb-box img {
     width: 100%;
+    aspect-ratio: 2/1;
     max-height: 800px;
     border-radius: 5px;
 }
