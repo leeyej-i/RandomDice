@@ -65,11 +65,11 @@ const Home = () => {
 
     }
 
-    const bfImg1 = ["/images/event1.png",
-        "/images/event2.png",
-        "/images/event3.png",
-        "/images/event4.png",
-        "/images/event5.png"]
+    const bfImg1 = ["/images/event1.webp",
+        "/images/event2.webp",
+        "/images/event3.webp",
+        "/images/event4.webp",
+        "/images/event5.webp"]
 
     const bfImg2 = ["https://media.discordapp.net/attachments/968429287663357972/1065467394077773864/KR.png?width=732&height=488",
         "https://cdn.discordapp.com/attachments/968429287663357972/1050615632162471936/RDD2_KR_.png",

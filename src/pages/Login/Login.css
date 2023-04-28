@@ -59,7 +59,7 @@ form {
 }
 
 .btn_clear {
-    background: url("../../../public/images/erase.png");
+    background: url("../../../public/images/erase.webp");
     border: 0;
     background-size: cover;
     height: 60%;
