@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import './Home.css'
-
 const Home = () => {
     const [slideNum, setSlideNum] = useState(0);
     const [move, setMove] = useState(true);
@@ -91,7 +90,7 @@ const Home = () => {
         <div>
             <section className="main" id="main">
                 <div className="jb-box">
-                    <img src="https://i0.wp.com/www.levelwinner.com/wp-content/uploads/2021/08/random-dice-guide-1000x563-2.jpg?ssl=1" />
+                    <img alt='배경화면' src='/images/background.webp' />
                 </div>
             </section>
             <div className='container'>
@@ -99,7 +98,7 @@ const Home = () => {
                 <div className='slide-item'>
 
                     <div className='slide-item-left' >
-                        <a href='#'><img src={bfImg1[slideNum]} ref={target1} className='animatedItemUp' /></a>
+                        <a href='#'><img alt='이벤트 화면1' src={bfImg1[slideNum]} ref={target1} className='animatedItemUp' /></a>
 
                         <div className='slide-bar'>
                             <div className='slide-page-bar'>
@@ -111,15 +110,15 @@ const Home = () => {
 
                             </div>
                             <div className='slide-btn-box'>
-                                {prev === true ? <button onClick={handleChangePrev} id="slide-prev"></button> : <button id="slide-prev-off"></button>}
-                                {next === true ? <button onClick={handleChangeNext} id="slide-next"></button> : <button id="slide-next-off"></button>}
-                                {move === true ? <button id="slide-move" onClick={handleChangeMove}></button> : <button id="slide-stop" onClick={handleChangeMove}></button>}
+                                {prev === true ? <button type='button' onClick={handleChangePrev} id="slide-prev"></button> : <button type='button' id="slide-prev-off"></button>}
+                                {next === true ? <button type='button' onClick={handleChangeNext} id="slide-next"></button> : <button type='button' id="slide-next-off"></button>}
+                                {move === true ? <button type='button' id="slide-move" onClick={handleChangeMove}></button> : <button type='button' id="slide-stop" onClick={handleChangeMove}></button>}
                                 <div className='page-num'>{slideNum + 1} / 5</div>
                             </div>
                         </div>
                     </div>
                     <div className='slide-item-right'>
-                        <a href='#'><img src={bfImg2[slideNum]} ref={target2} className="animatedItemLeft" /></a>
+                        <a href='#'><img alt='이벤트 화면2' src={bfImg2[slideNum]} ref={target2} className="animatedItemLeft" /></a>
                     </div>
                 </div>
             </div>
