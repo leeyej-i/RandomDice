@@ -7,6 +7,8 @@ div.container {
 div.jb-box {
     max-width: 100%;
     margin: 0 auto;
+    background-color: #000;
+    filter: brightness(50%);
     margin-top: -150px;
     overflow: hidden;
     position: relative;
@@ -20,6 +22,7 @@ div.jb-box img {
     max-height: 800px;
     border-radius: 5px;
 }
+
 
 div.benefit-slide {
     width: 100%;
@@ -161,4 +164,39 @@ div.slide-btn-box {
     border: none;
     background-image: url(' https://www.megabox.co.kr/static/pc/images/main/btn-benefit-slider-play.png');
     background-repeat: no-repeat;
+}
+
+img.animatedItemUp {
+    animation-name: slide-up;
+    animation-duration: 0.5s;
+
+}
+
+img.animatedItemLeft {
+    animation-name: slide-left;
+    animation-duration: 0.5s;
+
+}
+
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(50%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
 }

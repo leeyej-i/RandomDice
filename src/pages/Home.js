@@ -65,12 +65,23 @@ const Home = () => {
         "/images/event10.webp"]
     const target1 = useRef(null);
     const target2 = useRef(null);
+    useEffect(() => {
+        target1.current.classList.remove("animatedItemUp");
+        void target1.current.offsetWidth;
+        target1.current.classList.add("animatedItemUp");
+
+        target2.current.classList.remove("animatedItemLeft");
+        void target2.current.offsetWidth;
+        target2.current.classList.add("animatedItemLeft");
+    }, [slideNum])
 
     return (
         <div>
             <section className="main" id="main">
                 <div className="jb-box">
                     <img alt='배경화면' src='/images/background.webp' />
+                    <div className="img_back"></div>
+
                 </div>
             </section>
             <div className='container' style={{ paddingBottom: '50px' }}>
