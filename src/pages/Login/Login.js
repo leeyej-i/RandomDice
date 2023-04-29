@@ -61,6 +61,7 @@ const Login = () => {
                             path: "/",
                             sameSite: "strict",
                         })
+                        sessionStorage.setItem("id", inputId)
                         window.location.replace("/")
                     } else {
                         alert("아이디, 패스워드가 정확하지 않습니다.");

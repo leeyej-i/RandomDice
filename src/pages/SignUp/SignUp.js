@@ -127,6 +127,7 @@ const SignUp = () => {
                             path: "/",
                             sameSite: "strict",
                         })
+                        sessionStorage.setItem("id", id)
                         window.location.replace("/")
 
                     }

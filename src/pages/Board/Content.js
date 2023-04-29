@@ -67,11 +67,11 @@ const Content = () => {
     }
 
     const writeComment = () => {
-        if (!title) {
-            return alert("제목을 입력하세요")
+        if (!checkCookie()) {
+            return alert("로그인 하세요")
         }
 
-        else if (!contents) {
+        else if (!commentContents) {
             return alert("내용을 입력하세요.")
         }
 
@@ -131,7 +131,7 @@ const Content = () => {
                     </tr>
                 </tbody>
             </Table>
-            {!checkCookie() ? <div></div> :
+            {sessionStorage.getItem("id") !== id || checkCookie ? <div></div> :
                 <div className='button-box'>
                     <Button style={{ float: "right" }} variant="secondary" onClick={updateText} >수정</Button>
                     <Button style={{ float: "right", marginRight: "5px" }} variant="secondary" onClick={deleteText} >삭제</Button>
@@ -151,8 +151,8 @@ const Content = () => {
                 <div>
                     <div className='comment' >
 
-                        <div className='comment-id'>{sessionStorage.getItem("id")}</div>
-                        <div className='comment-contents-write'><input title="내용" id="contents" name="contents" onChange={handleInputContents} /></div>
+                        <div className='comment-id'>{checkCookie() ? sessionStorage.getItem("id") : null}</div>
+                        <div className='comment-contents-write'><input title="내용" style={{ width: '100%' }} id="contents" name="contents" onChange={handleInputContents} /></div>
                         <Button style={{ width: "15%" }} variant="secondary" onClick={writeComment}>등록</Button>
                     </div>
 
