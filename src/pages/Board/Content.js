@@ -4,11 +4,12 @@ import { useEffect, useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import './Content.css'
 import axios from 'axios';
+import { checkCookie } from '../../module/cookie/checkCookie';
 const Content = () => {
     const location = useLocation();
     const b_num = location.state.b_num;
     const [contents, setContents] = useState("")
-    const [id, setId] = useState("")
+    const id = location.state.id;
     const [date, setDate] = useState("")
     const [commentContents, setCommentContents] = useState("")
     const [title, setTitle] = useState("")
@@ -18,7 +19,6 @@ const Content = () => {
     useEffect(() => {
         getDetail()
         getComment()
-        console.log(id, sessionStorage.getItem("id"))
     }, []);
 
 
@@ -27,7 +27,7 @@ const Content = () => {
     }
 
     const updateText = () => {
-        navigate("/update", { state: { title: title, contents: contents } });
+        navigate("/update", { state: { title: title, contents: contents, id: id } });
     }
 
     const deleteText = () => {
@@ -49,7 +49,6 @@ const Content = () => {
                 setTitle(data[0].title)
                 setDate(data[0].date)
                 setContents(data[0].content)
-                setId(data[0].id)
             })
             .catch((e) => {
                 console.error(e);
@@ -132,7 +131,7 @@ const Content = () => {
                     </tr>
                 </tbody>
             </Table>
-            {sessionStorage.getItem("id") !== id ? <div></div> :
+            {!checkCookie() ? <div></div> :
                 <div className='button-box'>
                     <Button style={{ float: "right" }} variant="secondary" onClick={updateText} >수정</Button>
                     <Button style={{ float: "right", marginRight: "5px" }} variant="secondary" onClick={deleteText} >삭제</Button>

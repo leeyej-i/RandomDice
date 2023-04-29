@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
+import { checkCookie } from '../../module/cookie/checkCookie';
+import { useNavigate } from 'react-router-dom';
 let socket;
 const Collaboration = () => {
     const [diceChoose, setDiceChoose] = useState(false)
@@ -16,6 +18,7 @@ const Collaboration = () => {
     const [messages, setMessages] = useState([])
     const ENDPOINT = 'http://localhost:3001'
     const msgEndRef = useRef();
+    const navigate = useNavigate()
 
     useEffect(() => {
         socket = io.connect(ENDPOINT)
@@ -62,7 +65,12 @@ const Collaboration = () => {
                         <div className='choose-dice'><ChooseDice index="4"></ChooseDice></div>
                     </div>
                     <Button onClick={() => {
-                        setDiceChoose(true)
+                        if (checkCookie) setDiceChoose(true)
+                        else {
+                            alert("로그인해주세요")
+                            navigate("/login")
+
+                        }
                     }} style={{ float: "right", marginTop: "10px" }} variant="secondary" >제출</Button>
                 </div>
                 :

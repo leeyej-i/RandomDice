@@ -1,7 +1,8 @@
 import React from 'react';
 import '../App.css'
+import { removeCookie } from '../module/cookie/cookies'
+import { checkCookie } from '../module/cookie/checkCookie';
 const Menu = ({ menuOpened, setMenuOpened }) => {
-
     const handleClickOpenMenu = () => {
         console.log(menuOpened);
         if (menuOpened === false) {
@@ -14,8 +15,9 @@ const Menu = ({ menuOpened, setMenuOpened }) => {
     }
 
     const logout = () => {
-        sessionStorage.setItem("id", "")
+        removeCookie("token")
         window.location.replace("/")
+
     }
 
     return (
@@ -28,7 +30,7 @@ const Menu = ({ menuOpened, setMenuOpened }) => {
                 </button>
             </div>
             <ul className="menu">
-                {sessionStorage.getItem("id") === "" ?
+                {!checkCookie() ?
                     <>
                         <li><a href="/login">로그인</a></li>
                         <li><a href="/signup">회원가입</a></li>

@@ -10,6 +10,7 @@ import Menu from "./components/Menu.js";
 import Footer from './components/Footer';
 
 import { connect } from 'react-redux';
+import { checkCookie } from './module/cookie/checkCookie';
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login/Login'))
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'))
@@ -24,6 +25,8 @@ const Board = lazy(() => import('./pages/Board/Board'))
 
 function App() {
   const [menuOpened, setMenuOpened] = useState(false);
+  // const [chkCook, setChkCook] = useState(checkCookie());
+
   return (
     <>
       <div id='wrapper'>
@@ -35,7 +38,10 @@ function App() {
           />
           <Menu
             menuOpened={menuOpened}
-            setMenuOpened={setMenuOpened} />
+            setMenuOpened={setMenuOpened}
+          // chkCook={chkCook}
+          // setChkCook={setChkCook} 
+          />
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />

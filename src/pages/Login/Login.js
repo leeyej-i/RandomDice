@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import { setCookie } from '../../module/cookie/cookies';
 
 const StyledLink = styled(Link)`
 	box-sizing: border-box;
@@ -54,10 +54,13 @@ const Login = () => {
 
             axios.post('/api/login', body)
                 .then(res => {
-                    if (res.data[0].cnt === 1) {
-                        console.log("로그인성공")
-                        sessionStorage.setItem('id', inputId)
-                        // sessionsStorage는 창 닫으면 사라짐, localStorage는 안사라짐
+                    if (res.data.message === "로그인 성공") {
+                        console.log(res.data)
+                        const accessToken = res.data.accessToken
+                        setCookie("token", accessToken, {
+                            path: "/",
+                            sameSite: "strict",
+                        })
                         window.location.replace("/")
                     } else {
                         alert("아이디, 패스워드가 정확하지 않습니다.");

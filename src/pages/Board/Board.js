@@ -5,6 +5,7 @@ import { Table, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { checkCookie } from '../../module/cookie/checkCookie';
 const Board = () => {
 
     const [boardList, setBoardList] = useState([]);
@@ -25,17 +26,18 @@ const Board = () => {
             });
     }
 
-    const view = (num) => {
-        console.log(num, "으로 들어가자")
+    const view = (num, id) => {
+        console.log(id);
         navigate('/content', {
             state: {
-                b_num: num
+                b_num: num,
+                id: id
             }
         });
     }
 
     const write = () => {
-        if (sessionStorage.getItem("id") !== '') {
+        if (!checkCookie() == '') {
             navigate('/write')
         }
         else {
@@ -60,7 +62,7 @@ const Board = () => {
                 <tbody>
                     {
                         boardList.map((v) => (
-                            <tr key={v.b_num} onClick={() => view(v.b_num)}>
+                            <tr key={v.b_num} onClick={() => view(v.b_num, v.id)}>
                                 <td>{v.b_num}</td>
                                 <td>{v.title}</td>
                                 <td>{v.id}</td>
@@ -70,7 +72,7 @@ const Board = () => {
                     }
                 </tbody>
             </Table>
-            {sessionStorage.getItem("id") === '' ? <div></div> :
+            {!checkCookie() ? <div></div> :
                 <Button style={{ float: "right" }} variant="secondary" onClick={() => write()}>글쓰기</Button>
             }
         </div >

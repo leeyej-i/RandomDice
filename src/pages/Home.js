@@ -78,7 +78,7 @@ const Home = () => {
                 <div className='slide-item'>
 
                     <div className='slide-item-left' >
-                        <a href='#'><img alt='이벤트 화면1' src={bfImg1[slideNum]} ref={target1} className='animatedItemUp' /></a>
+                        <img alt='이벤트 화면1' src={bfImg1[slideNum]} ref={target1} className='animatedItemUp' />
 
                         <div className='slide-bar'>
                             <div className='slide-page-bar'>
@@ -98,7 +98,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='slide-item-right'>
-                        <a href='#'><img alt='이벤트 화면2' src={bfImg2[slideNum]} ref={target2} className="animatedItemLeft" /></a>
+                        <img alt='이벤트 화면2' src={bfImg2[slideNum]} ref={target2} className="animatedItemLeft" />
                     </div>
                 </div>
             </div>

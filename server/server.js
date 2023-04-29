@@ -4,7 +4,17 @@ const app = express();
 const PORT = 3001;
 const bodyParser = require('body-parser')
 const mysql = require("mysql");
-const http = require('http')
+const http = require('http');
+require("dotenv").config();
+const jwt = require('jsonwebtoken');
+// access token을 secret key 기반으로 생성
+const generateAccessToken = (id) => {
+    return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "15m",
+    });
+};
+
+
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -36,9 +46,11 @@ app.post("/api/login", (req, res) => {
         if (err) {
             console.log(err);
         }
-
-        console.log(result)
-        res.send(result);
+        else {
+            let accessToken = generateAccessToken(id);
+            let message = "로그인 성공"
+            res.json({ accessToken, message });
+        }
     });
 
 });
@@ -73,8 +85,9 @@ app.post("/api/signup", (req, res) => {
             console.log(err);
         }
 
-        console.log("추가 성공")
-        res.send("success");
+        let accessToken = generateAccessToken(id);
+        let message = "회원가입 성공"
+        res.json({ accessToken, message });
     });
 
 });

@@ -2,6 +2,7 @@ import './SignUp.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { setCookie } from '../../module/cookie/cookies';
 
 const SignUp = () => {
 
@@ -118,9 +119,14 @@ const SignUp = () => {
 
             axios.post('/api/signup', body)
                 .then(res => {
-                    console.log(res.data);
-                    if (res.data === "success") {
-                        sessionStorage.setItem('id', id)
+                    console.log(res.data.message);
+                    if (res.data.message === "회원가입 성공") {
+
+                        const accessToken = res.data.accessToken
+                        setCookie("token", accessToken, {
+                            path: "/",
+                            sameSite: "strict",
+                        })
                         window.location.replace("/")
 
                     }

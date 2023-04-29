@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { getCookie, removeCookie } from "../module/cookie/cookies";
+import { checkCookie } from "../module/cookie/checkCookie";
 
 const HeaderWrap = styled.div`
     position: fixed;
@@ -51,7 +54,7 @@ const Header = ({ menuOpened, setMenuOpened }) => {
     }, [pageY]);
 
     const logout = () => {
-        sessionStorage.setItem("id", "")
+        removeCookie("token")
         window.location.replace("/")
     }
     const handleClickOpenMenu = () => {
@@ -65,15 +68,12 @@ const Header = ({ menuOpened, setMenuOpened }) => {
         console.log(menuOpened)
         setMenuOpened(menuOpened)
     }
-
-
-
     return (
         <HeaderWrap className={hide && 'hide'}>
             <div className="head-container">
                 <h1 className="title"><Link to="/">RandomDice</Link></h1>
                 <ul className="header-menu">
-                    {sessionStorage.getItem("id") === "" ?
+                    {!checkCookie() ?
                         <>
                             <li><Link to="/login">로그인</Link></li>
                             <li><Link to="/signup">회원가입</Link></li>

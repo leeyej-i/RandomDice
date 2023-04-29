@@ -9,11 +9,13 @@ const Update = () => {
 
     const [title, setTitle] = useState("")
     const [contents, setContents] = useState("")
+    const [id, setId] = useState("");
     const location = useLocation();
 
     useEffect(() => {
         setTitle(location.state.title)
         setContents(location.state.contents)
+        setId(location.state.id)
     }, []);
 
 
@@ -36,7 +38,7 @@ const Update = () => {
 
         else {
             let body = {
-                id: sessionStorage.getItem("id"),
+                id: id,
                 title: title,
                 contents: contents
             };
