@@ -59,6 +59,7 @@ const Content = () => {
         axios.get("/api/comment", { params: { b_num: b_num } })
             .then((res) => {
                 const { data } = res;
+                console.log(data)
                 setCommentList(data)
             })
             .catch((e) => {
@@ -131,7 +132,7 @@ const Content = () => {
                     </tr>
                 </tbody>
             </Table>
-            {sessionStorage.getItem("id") !== id || checkCookie ? <div></div> :
+            {sessionStorage.getItem("id") !== id || !checkCookie() ? <div></div> :
                 <div className='button-box'>
                     <Button style={{ float: "right" }} variant="secondary" onClick={updateText} >수정</Button>
                     <Button style={{ float: "right", marginRight: "5px" }} variant="secondary" onClick={deleteText} >삭제</Button>

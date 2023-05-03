@@ -18,6 +18,7 @@ const Board = () => {
         axios.get("/api/list", {})
             .then((res) => {
                 const { data } = res;
+                console.log(data)
                 setBoardList(data)
             })
             .catch((e) => {

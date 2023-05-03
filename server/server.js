@@ -47,9 +47,14 @@ app.post("/api/login", (req, res) => {
             console.log(err);
         }
         else {
-            let accessToken = generateAccessToken(id);
-            let message = "로그인 성공"
-            res.json({ accessToken, message });
+            if (result[0].cnt == 1) {
+                let accessToken = generateAccessToken(id);
+                let message = "로그인 성공"
+                res.json({ accessToken, message });
+            }
+            else {
+                res.send("실패")
+            }
         }
     });
 
@@ -231,7 +236,10 @@ io.on('connection', (socket) => {
 });
 
 
+app.get('*', function (request, response) {
 
+    response.sendFile(path.join(__dirname, "..", '/build/index.html'))
+});
 
 server.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);

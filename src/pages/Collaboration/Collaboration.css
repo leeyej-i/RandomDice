@@ -16,8 +16,15 @@
 }
 
 .user-dice-box {
+    position: absolute;
+    width: 400px;
+    left: 15%;
+    background-color: #635f5f;
+    padding: 25px;
     display: flex;
     flex-direction: row;
+    z-index: 2;
+
 }
 
 .c-dice-set {
@@ -33,9 +40,6 @@
     width: 100%;
 }
 
-div.user-dice-box {
-    width: 40%;
-}
 
 div.user-dice-box-item {
     width: 20%;
@@ -49,7 +53,7 @@ div.user-dice-box-item img {
 div.user-dice-box-item-text {
     transform: translate(-50%, -50%);
     position: absolute;
-    font-size: 0.9rem;
+    font-size: 20px;
     font-weight: bold;
     top: 50%;
     left: 50%;
@@ -62,6 +66,5 @@ div.user-dice-box-item-text {
 
 .user-msg {
     padding: 10px;
-    border: 2px dashed;
     margin-bottom: 5px;
 }
